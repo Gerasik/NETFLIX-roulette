@@ -1,0 +1,37 @@
+@import '../../styles/colors';
+
+$apacityColor: rgba(
+  $color: $font-color,
+  $alpha: 0.7,
+);
+
+$apacityColorSecond: rgba(
+  $color: $font-color,
+  $alpha: 0.4,
+);
+
+.item {
+  color: $apacityColor;
+  .image {
+    width: 100%;
+    margin-top: 2em;
+  }
+  .title {
+    font-weight: bold;
+  }
+  .date {
+    padding: 0.5em 1.3em;
+    border: 0.05em solid $apacityColorSecond;
+    border-radius: 0.8em;
+  }
+  .container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 0.8em;
+    align-content: center;
+  }
+  .gengre {
+    color: $apacityColorSecond;
+    padding-right: 0.4em;
+  }
+}

@@ -16,6 +16,7 @@
   },
   "rules": {
     "prettier/prettier": ["error", { "singleQuote": true }],
+    "@typescript-eslint/camelcase": ["error", { "allow": ["poster_path", "release_date"] }],
     "import/extensions": ["error", "always", { "js": "newer", "ts": "never", "tsx": "never" }],
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx", ".ts", ".tsx"] }]
   },

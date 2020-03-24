@@ -1,0 +1,67 @@
+@import '../../styles/colors';
+
+$border-radius-size: 0.3em;
+
+:root {
+  color: $font-color;
+  width: 100%;
+  button {
+    border: none;
+    color: $font-color;
+    text-transform: uppercase;
+  }
+  .lable {
+    font-size: 2em;
+    margin: 0.4em 0;
+  }
+  .lable,
+  .search-by {
+    font-weight: 100;
+    text-transform: uppercase;
+  }
+  .search-form {
+    display: flex;
+    justify-content: stretch;
+    input,
+    button {
+      font-size: 1.4em;
+      border-radius: $border-radius-size;
+    }
+    input {
+      color: $font-color;
+      width: 100%;
+      margin-right: 0.5em;
+      border: none;
+      background-color: rgba($color: $main-color, $alpha: 0.8);
+      padding: 0.5em 1em;
+    }
+    button {
+      padding: 0.5em 2em;
+      background-color: $main-font-color;
+    }
+  }
+  .search-by {
+    font-size: 0.9em;
+    margin: 1.3em 0;
+    span {
+      padding-right: 1em;
+    }
+    button {
+      font-size: 0.9em;
+      padding: 0.5em 2em;
+      background-color: rgba($color: $footer-color, $alpha: 0.6);
+      &.by-title {
+        border-radius: $border-radius-size 0em 0em $border-radius-size;
+      }
+      &.by-gengre {
+        border-radius: 0 $border-radius-size $border-radius-size 0;
+      }
+      &:hover {
+        background-color: $main-font-color;
+      }
+    }
+    .active {
+      background-color: $main-font-color;
+    }
+  }
+}

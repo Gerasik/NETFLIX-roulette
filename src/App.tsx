@@ -2,7 +2,7 @@ import React, { ReactElement } from 'react';
 import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
 
 import Header from './components/Header';
-import Body from './components/Body';
+import BodyContainer from './containers/Body';
 import Search from './components/Search';
 import Footer from './components/Footer';
 import ErrorBoundary from './components/ErrorBoundary';
@@ -20,7 +20,7 @@ function App(): ReactElement {
           </Header>
         </Switch>
         <ErrorBoundary>
-          <Body />
+          <BodyContainer />
         </ErrorBoundary>
       </main>
       <Footer />

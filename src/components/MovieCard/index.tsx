@@ -1,13 +1,9 @@
 import React from 'react';
 import styles from './style.module.scss';
 
-import { MovieCardData } from '../../models';
+import { Movie } from '../../models';
 
-type MovieCardProps = {
-  data: MovieCardData;
-};
-
-export default function MovieCard(props: MovieCardProps) {
+export default function MovieCard(props: { data: Movie }) {
   const { data } = props;
   const { title, genres, poster_path, release_date } = data;
   return (

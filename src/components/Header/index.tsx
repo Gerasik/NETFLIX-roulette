@@ -8,7 +8,7 @@ type HeaderProps = {
   children: FunctionComponentElement<null>;
 };
 
-export default function Header({ children }: HeaderProps): FunctionComponentElement<HeaderProps> {
+const Header: React.FunctionComponent = ({ children }) => {
   return (
     <div className={styles['header-background']}>
       <img src={headerIMG} alt="posters" />
@@ -16,4 +16,5 @@ export default function Header({ children }: HeaderProps): FunctionComponentElem
       <div className={styles.container}>{children}</div>
     </div>
   );
-}
+};
+export default Header;

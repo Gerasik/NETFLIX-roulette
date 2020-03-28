@@ -1,10 +1,16 @@
-// export type MovieCardData = {
-//   id: number;
-//   title: string;
-//   genres: Array<string>;
-//   poster_path: string;
-//   release_date: Date;
-// };
+import { FunctionComponent } from 'react';
+import Immutable from 'immutable';
+
+export interface ActionInterface {
+  type: string;
+  payload: MoviesResponse;
+}
+
+export type Action<D = MoviesResponse> = (data: D) => ActionInterface;
+
+export type Reducer<S, A = ActionInterface> = (state: S, action: A) => S;
+
+export type State = Immutable.Map<string, MoviesResponse>;
 
 export type Movie = {
   id: number;
@@ -26,4 +32,12 @@ export type MoviesResponse = {
   total: number;
   offset: number;
   limit: number;
+};
+
+export type ErrorBoundaryProps = {
+  children: FunctionComponent;
+};
+
+export type ErrorBoundaryState = {
+  hasError: boolean;
 };

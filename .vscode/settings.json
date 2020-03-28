@@ -2,5 +2,11 @@
   "editor.formatOnSave": true,
   "files.exclude": {
     "**/.git": false
-  }
+  },
+  "cSpell.words": [
+    "camelcase",
+    "contenthash",
+    "entrypoints",
+    "esnext"
+  ]
 }

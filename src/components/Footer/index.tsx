@@ -1,4 +1,5 @@
 import React, { ReactElement } from 'react';
+
 import styles from './style.module.scss';
 
 export default function Footer(): ReactElement {

@@ -12,18 +12,12 @@
     padding: 2em 0;
   }
 
-  img {
+  .background-image {
     height: 100%;
     position: absolute;
     width: 100%;
     z-index: -1;
     object-fit: cover;
     filter: blur(0.2em);
-  }
-
-  p {
-    font-size: 2em;
-    font-weight: bold;
-    color: #fff;
   }
 }

@@ -1,11 +1,11 @@
 import React, { ReactElement } from 'react';
 import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
 
-import Header from './components/Header';
-import BodyContainer from './containers/Body';
-import Search from './components/Search';
-import Footer from './components/Footer';
-import ErrorBoundary from './components/ErrorBoundary';
+import Header from 'components/Header';
+import BodyContainer from 'containers/Body';
+import Search from 'components/Search';
+import Footer from 'components/Footer';
+import ErrorBoundary from 'components/ErrorBoundary';
 
 function App(): ReactElement {
   return (

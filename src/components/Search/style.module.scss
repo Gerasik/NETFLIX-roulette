@@ -1,5 +1,4 @@
 @import '../../styles/colors';
-
 $border-radius-size: 0.3em;
 
 :root {
@@ -10,11 +9,11 @@ $border-radius-size: 0.3em;
     color: $font-color;
     text-transform: uppercase;
   }
-  .lable {
+  .label {
     font-size: 2em;
     margin: 0.4em 0;
   }
-  .lable,
+  .label,
   .search-by {
     font-weight: 100;
     text-transform: uppercase;
@@ -22,12 +21,12 @@ $border-radius-size: 0.3em;
   .search-form {
     display: flex;
     justify-content: stretch;
-    input,
-    button {
+    .search-text,
+    .search-button {
       font-size: 1.4em;
       border-radius: $border-radius-size;
     }
-    input {
+    .search-text {
       color: $font-color;
       width: 100%;
       margin-right: 0.5em;
@@ -35,7 +34,7 @@ $border-radius-size: 0.3em;
       background-color: rgba($color: $main-color, $alpha: 0.8);
       padding: 0.5em 1em;
     }
-    button {
+    .search-button {
       padding: 0.5em 2em;
       background-color: $main-font-color;
     }
@@ -46,16 +45,17 @@ $border-radius-size: 0.3em;
     span {
       padding-right: 1em;
     }
-    button {
+    .by-title {
+      border-radius: $border-radius-size 0em 0em $border-radius-size;
+    }
+    .by-genre {
+      border-radius: 0 $border-radius-size $border-radius-size 0;
+    }
+    .by-genre,
+    .by-title {
       font-size: 0.9em;
       padding: 0.5em 2em;
-      background-color: rgba($color: $footer-color, $alpha: 0.6);
-      &.by-title {
-        border-radius: $border-radius-size 0em 0em $border-radius-size;
-      }
-      &.by-gengre {
-        border-radius: 0 $border-radius-size $border-radius-size 0;
-      }
+      background-color: rgba($color: $third-color, $alpha: 0.6);
       &:hover {
         background-color: $main-font-color;
       }

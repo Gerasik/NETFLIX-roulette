@@ -1,17 +1,17 @@
 @import '../../styles/colors';
 
-$apacityColor: rgba(
+$opacityColor: rgba(
   $color: $font-color,
   $alpha: 0.7,
 );
 
-$apacityColorSecond: rgba(
+$opacityColorSecond: rgba(
   $color: $font-color,
   $alpha: 0.4,
 );
 
 .item {
-  color: $apacityColor;
+  color: $opacityColor;
   .image {
     width: 100%;
     margin-top: 2em;
@@ -20,18 +20,24 @@ $apacityColorSecond: rgba(
     font-weight: bold;
   }
   .date {
-    padding: 0.5em 1.3em;
-    border: 0.05em solid $apacityColorSecond;
+    padding: 0.5em 1.1em;
+    border: 0.05em solid $opacityColorSecond;
     border-radius: 0.8em;
+    margin: 0.1em;
   }
   .container {
     display: flex;
     justify-content: space-between;
     margin-top: 0.8em;
-    align-content: center;
+    align-items: center;
+    min-height: 2.5em;
   }
-  .gengre {
-    color: $apacityColorSecond;
-    padding-right: 0.4em;
+  .genre-list {
+    margin-top: 0.5em;
+  }
+  .genre {
+    display: inline-block;
+    color: $opacityColorSecond;
+    margin-right: 0.4em;
   }
 }

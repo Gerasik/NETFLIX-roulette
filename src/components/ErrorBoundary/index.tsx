@@ -1,12 +1,6 @@
-import React, { FunctionComponentElement, ErrorInfo } from 'react';
-
-type ErrorBoundaryProps = {
-  children: FunctionComponentElement<null>;
-};
-
-type ErrorBoundaryState = {
-  hasError: boolean;
-};
+/* eslint-disable no-console */
+import React, { ErrorInfo } from 'react';
+import { ErrorBoundaryProps, ErrorBoundaryState } from 'models';
 
 export default class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoundaryState> {
   constructor(props: ErrorBoundaryProps) {
@@ -19,16 +13,16 @@ export default class ErrorBoundary extends React.Component<ErrorBoundaryProps, E
   }
 
   componentDidCatch(error: Error, errorInfo: ErrorInfo): void {
-    window.console.log('---log error---');
-    window.console.log(error, errorInfo);
-    window.console.log('---log error---');
+    console.log('---log error---');
+    console.log(error, errorInfo);
+    console.log('---log error---');
   }
 
-  render(): FunctionComponentElement<null> {
+  render() {
     const { children } = this.props;
     const { hasError } = this.state;
     if (hasError) {
-      return <h1>Что-то пошло не так.</h1>;
+      return <h1>Something went wrong.</h1>;
     }
 
     return children;

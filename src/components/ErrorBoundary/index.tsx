@@ -1,9 +1,9 @@
 /* eslint-disable no-console */
 import React, { ErrorInfo } from 'react';
-import { ErrorBoundaryProps, ErrorBoundaryState } from 'models';
+import { ErrorBoundaryState } from './models';
 
-export default class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoundaryState> {
-  constructor(props: ErrorBoundaryProps) {
+export default class ErrorBoundary extends React.Component<{}, ErrorBoundaryState> {
+  constructor(props) {
     super(props);
     this.state = { hasError: false };
   }

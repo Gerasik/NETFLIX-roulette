@@ -1,8 +1,9 @@
-import { State, MoviesResponse } from 'models';
+import { createStructuredSelector } from 'reselect';
 import { connect } from 'react-redux';
 
 import Body from 'components/Body';
 import { setData } from './actions';
+import { moviesData } from './selectors';
 
 // import { createSelector } from 'reselect';
 // add later
@@ -11,12 +12,8 @@ import { setData } from './actions';
 //   bodyReducer => bodyReducer
 // );
 
-type StateToProps<> = (state: {
-  toJS: () => { movieData: MoviesResponse };
-}) => { bodyReducer: MoviesResponse | {} };
-
-const mapStateToProps: StateToProps = state => ({
-  bodyReducer: state.toJS().movieData,
+const mapStateToProps = createStructuredSelector({
+  moviesData,
 });
 
 const mapDispatchToProps = {

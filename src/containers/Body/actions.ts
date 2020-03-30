@@ -1,10 +1,12 @@
 import ActionType from './constants';
-import { Action } from '../../models';
+import { ActionCreator } from './models';
 
-export const setData: Action = data => {
-  return { type: ActionType.SET_DATA, payload: data };
-};
+export const setData: ActionCreator.SetData = payload => ({
+  type: ActionType.SET_DATA,
+  payload,
+});
 
-export const increment: Action = data => {
-  return { type: ActionType.SET_DATA, payload: data };
-};
+// export const increment: Action. = payload => ({
+//   type: ActionType.,
+//   payload,
+// });

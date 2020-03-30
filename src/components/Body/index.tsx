@@ -1,17 +1,14 @@
-import React, { useState, useEffect, FunctionComponent } from 'react';
+import React, { useEffect, FunctionComponent } from 'react';
 
-import { Movie, Action, State, MoviesResponse } from 'models';
 import MovieCard from 'components/MovieCard';
 import styles from './style.module.scss';
+import { BodyProps } from './models';
 
 // add /*bodyReducer,*/ hire
-const Body: FunctionComponent<{ setData: Action; bodyReducer: MoviesResponse }> = ({
-  setData,
-  bodyReducer,
-}) => {
+const Body: FunctionComponent<BodyProps> = ({ setData, moviesData }) => {
   // const [data, setaData]: [Array<Movie>, Function] = useState([]);
 
-  console.log(bodyReducer);
+  console.log(moviesData);
 
   useEffect(() => {
     fetch('https://reactjs-cdp.herokuapp.com/movies?limit=6')
@@ -45,8 +42,8 @@ const Body: FunctionComponent<{ setData: Action; bodyReducer: MoviesResponse }> 
     // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
     // onWheel={event => onScrollList(event)}
     <ul className={styles['movie-list']}>
-      {bodyReducer.data.map((item: Movie) => (
-        <li key={item.id} className={styles['movie-item']}>
+      {moviesData.map(item => (
+        <li key={item.get('id')} className={styles['movie-item']}>
           <MovieCard data={item} />
         </li>
       ))}

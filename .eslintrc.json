@@ -10,7 +10,11 @@
     "prettier/@typescript-eslint",
     "plugin:prettier/recommended"
   ],
-  "plugins": ["react", "@typescript-eslint", "prettier"],
+  "plugins": [
+    "react",
+    "@typescript-eslint",
+    "prettier"
+  ],
   "env": {
     "browser": true,
     "jasmine": true,
@@ -20,10 +24,30 @@
     "project": "./tsconfig.json"
   },
   "rules": {
-    "prettier/prettier": ["error", { "singleQuote": true }],
-    "@typescript-eslint/camelcase": ["error", { "allow": ["poster_path", "release_date"] }],
+    "prettier/prettier": "off",
+    "@typescript-eslint/camelcase": [
+      "error",
+      {
+        "allow": [
+          "poster_path",
+          "release_date"
+        ]
+      }
+    ],
+    "@typescript-eslint/interface-name-prefix": "off",
+    "@typescript-eslint/no-namespace": "off",
+    "@typescript-eslint/no-use-before-define": "off",
     "import/no-unresolved": "off",
-    "import/extensions": ["error", "never", { "ts": "always", "tsx": "always" }]
+    "import/extensions": [
+      "error",
+      "never",
+      {
+        "ts": "always",
+        "tsx": "always"
+      }
+    ],
+    "import/prefer-default-export": "off",
+    "no-shadow": "off"
   },
   "settings": {
     "react": {
@@ -61,7 +85,9 @@
   },
   "overrides": [
     {
-      "files": ["**/*.tsx"],
+      "files": [
+        "**/*.tsx"
+      ],
       "rules": {
         "react/prop-types": "off"
       }

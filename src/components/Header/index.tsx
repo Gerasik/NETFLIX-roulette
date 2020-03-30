@@ -13,4 +13,5 @@ const Header: FunctionComponent = ({ children }) => {
     </div>
   );
 };
+
 export default Header;

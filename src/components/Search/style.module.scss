@@ -1,12 +1,11 @@
-@import '../../styles/colors';
-$border-radius-size: 0.3em;
+$borderRadiusSize: 0.3em;
 
 :root {
-  color: $font-color;
+  color: $fontColor;
   width: 100%;
   button {
     border: none;
-    color: $font-color;
+    color: $fontColor;
     text-transform: uppercase;
   }
   .label {
@@ -24,19 +23,19 @@ $border-radius-size: 0.3em;
     .search-text,
     .search-button {
       font-size: 1.4em;
-      border-radius: $border-radius-size;
+      border-radius: $borderRadiusSize;
     }
     .search-text {
-      color: $font-color;
+      color: $fontColor;
       width: 100%;
       margin-right: 0.5em;
       border: none;
-      background-color: rgba($color: $main-color, $alpha: 0.8);
+      background-color: rgba($color: $mainColor, $alpha: 0.8);
       padding: 0.5em 1em;
     }
     .search-button {
       padding: 0.5em 2em;
-      background-color: $main-font-color;
+      background-color: $mainFontColor;
     }
   }
   .search-by {
@@ -46,22 +45,22 @@ $border-radius-size: 0.3em;
       padding-right: 1em;
     }
     .by-title {
-      border-radius: $border-radius-size 0em 0em $border-radius-size;
+      border-radius: $borderRadiusSize 0em 0em $borderRadiusSize;
     }
     .by-genre {
-      border-radius: 0 $border-radius-size $border-radius-size 0;
+      border-radius: 0 $borderRadiusSize $borderRadiusSize 0;
     }
     .by-genre,
     .by-title {
       font-size: 0.9em;
       padding: 0.5em 2em;
-      background-color: rgba($color: $third-color, $alpha: 0.6);
+      background-color: rgba($color: $thirdColor, $alpha: 0.6);
       &:hover {
-        background-color: $main-font-color;
+        background-color: $mainFontColor;
       }
     }
     .active {
-      background-color: $main-font-color;
+      background-color: $mainFontColor;
     }
   }
 }

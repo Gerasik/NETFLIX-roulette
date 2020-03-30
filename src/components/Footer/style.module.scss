@@ -1,12 +1,10 @@
-@import '../../styles/colors';
-
 footer:local {
-  background-color: $third-color;
+  background-color: $thirdColor;
   display: flex;
   justify-content: center;
 }
 .text {
-  color: $main-font-color;
+  color: $mainFontColor;
   padding: 0.5% 0;
   font-size: 1.3em;
 }

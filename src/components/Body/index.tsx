@@ -8,7 +8,7 @@ import { BodyProps } from './models';
 const Body: FunctionComponent<BodyProps> = ({ setData, moviesData }) => {
   // const [data, setaData]: [Array<Movie>, Function] = useState([]);
 
-  console.log(moviesData);
+  // console.log(moviesData);
 
   useEffect(() => {
     fetch('https://reactjs-cdp.herokuapp.com/movies?limit=6')

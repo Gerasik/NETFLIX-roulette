@@ -30,12 +30,12 @@ $borderRadiusSize: 0.3em;
       width: 100%;
       margin-right: 0.5em;
       border: none;
-      background-color: rgba($color: $mainColor, $alpha: 0.8);
+      background-color: rgba($color: $primaryColor, $alpha: 0.8);
       padding: 0.5em 1em;
     }
     .search-button {
       padding: 0.5em 2em;
-      background-color: $mainFontColor;
+      background-color: $secondaryFontColor;
     }
   }
   .search-by {
@@ -54,13 +54,13 @@ $borderRadiusSize: 0.3em;
     .by-title {
       font-size: 0.9em;
       padding: 0.5em 2em;
-      background-color: rgba($color: $thirdColor, $alpha: 0.6);
+      background-color: rgba($color: $tertiaryColor, $alpha: 0.6);
       &:hover {
-        background-color: $mainFontColor;
+        background-color: $secondaryFontColor;
       }
     }
     .active {
-      background-color: $mainFontColor;
+      background-color: $secondaryFontColor;
     }
   }
 }

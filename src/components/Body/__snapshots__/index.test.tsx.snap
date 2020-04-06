@@ -1,176 +1,60 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<Body /> should render with test data 1`] = `
-<Body
-  moviesData={
-    Immutable.List [
-      Immutable.Map {
-        "budget": 54545,
-        "release_date": "2020-05-01",
-        "vote_average": 55,
-        "tagline": "test",
-        "genres": Immutable.List [
-          "drama",
-          "sitcom",
-          "drama",
-        ],
-        "poster_path": "/movie_url/image.jpg",
-        "title": "first movie",
-        "runtime": 5454,
-        "overview": "ove",
-        "vote_count": 66,
-        "id": 1,
-        "revenue": 5454,
-      },
-      Immutable.Map {
-        "budget": 54545,
-        "release_date": "2020-05-01",
-        "vote_average": 55,
-        "tagline": "test",
-        "genres": Immutable.List [
-          "drama",
-        ],
-        "poster_path": "/movie_url/image2.jpg",
-        "title": "second movie",
-        "runtime": 5454,
-        "overview": "ove",
-        "vote_count": 66,
-        "id": 2,
-        "revenue": 5454,
-      },
-    ]
-  }
-  setData={[Function]}
+<ul
+  className="movie-list"
 >
-  <ul
-    className="movie-list"
+  <li
+    className="movie-item"
+    key="1"
   >
-    <li
-      className="movie-item"
-      key="1"
-    >
-      <MovieCard
-        data={
-          Immutable.Map {
-            "budget": 54545,
-            "release_date": "2020-05-01",
-            "vote_average": 55,
-            "tagline": "test",
-            "genres": Immutable.List [
-              "drama",
-              "sitcom",
-              "drama",
-            ],
-            "poster_path": "/movie_url/image.jpg",
-            "title": "first movie",
-            "runtime": 5454,
-            "overview": "ove",
-            "vote_count": 66,
-            "id": 1,
-            "revenue": 5454,
-          }
+    <MovieCard
+      data={
+        Immutable.Map {
+          "budget": 54545,
+          "release_date": "2020-05-01",
+          "vote_average": 55,
+          "tagline": "test",
+          "genres": Immutable.List [
+            "drama",
+            "sitcom",
+            "drama",
+          ],
+          "poster_path": "/movie_url/image.jpg",
+          "title": "first movie",
+          "runtime": 5454,
+          "overview": "ove",
+          "vote_count": 66,
+          "id": 1,
+          "revenue": 5454,
         }
-      >
-        <div
-          className="item"
-        >
-          <img
-            alt="first movie"
-            className="image"
-            src="/movie_url/image.jpg"
-          />
-          <div
-            className="container"
-          >
-            <span
-              className="title"
-            >
-              first movie
-            </span>
-            <span
-              className="date"
-            >
-              2020
-            </span>
-          </div>
-          <div
-            className="genre-list"
-          >
-            <span
-              className="genre"
-              key="drama"
-            >
-              drama
-            </span>
-            <span
-              className="genre"
-              key="sitcom"
-            >
-              sitcom
-            </span>
-          </div>
-        </div>
-      </MovieCard>
-    </li>
-    <li
-      className="movie-item"
-      key="2"
-    >
-      <MovieCard
-        data={
-          Immutable.Map {
-            "budget": 54545,
-            "release_date": "2020-05-01",
-            "vote_average": 55,
-            "tagline": "test",
-            "genres": Immutable.List [
-              "drama",
-            ],
-            "poster_path": "/movie_url/image2.jpg",
-            "title": "second movie",
-            "runtime": 5454,
-            "overview": "ove",
-            "vote_count": 66,
-            "id": 2,
-            "revenue": 5454,
-          }
+      }
+    />
+  </li>
+  <li
+    className="movie-item"
+    key="2"
+  >
+    <MovieCard
+      data={
+        Immutable.Map {
+          "budget": 54545,
+          "release_date": "2020-05-01",
+          "vote_average": 55,
+          "tagline": "test",
+          "genres": Immutable.List [
+            "drama",
+          ],
+          "poster_path": "/movie_url/image2.jpg",
+          "title": "second movie",
+          "runtime": 5454,
+          "overview": "ove",
+          "vote_count": 66,
+          "id": 2,
+          "revenue": 5454,
         }
-      >
-        <div
-          className="item"
-        >
-          <img
-            alt="second movie"
-            className="image"
-            src="/movie_url/image2.jpg"
-          />
-          <div
-            className="container"
-          >
-            <span
-              className="title"
-            >
-              second movie
-            </span>
-            <span
-              className="date"
-            >
-              2020
-            </span>
-          </div>
-          <div
-            className="genre-list"
-          >
-            <span
-              className="genre"
-              key="drama"
-            >
-              drama
-            </span>
-          </div>
-        </div>
-      </MovieCard>
-    </li>
-  </ul>
-</Body>
+      }
+    />
+  </li>
+</ul>
 `;

@@ -14,7 +14,8 @@ declare global {
   }
 }
 
-const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__;
-const store = createStore(bodyReducer, composeEnhancers());
+// const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__;
+// const store = createStore(bodyReducer, composeEnhancers());
+const store = createStore(bodyReducer);
 
 export default store;

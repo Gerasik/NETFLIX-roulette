@@ -1,12 +1,52 @@
-.movie-list {
-  list-style: none;
-  margin: 0;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  padding: 1em 3em 2em;
-  background-color: $primaryColor;
-  .movie-item {
+$borderRadiusSize: 0.3em;
+
+.movie- {
+  &list,
+  &header {
+    padding: 1em 3em;
+    display: flex;
+    justify-content: space-between;
+  }
+  &list {
+    list-style: none;
+    margin: 0;
+    flex-wrap: wrap;
+    background-color: $primaryColor;
+  }
+  &item {
     width: 30%;
+  }
+  &container {
+    display: flex;
+    flex-direction: column;
+  }
+  &count {
+    font-weight: bold;
+  }
+  &buttons {
+    font-size: 0.9em;
+    text-transform: uppercase;
+    span {
+      margin: 0 1.3em;
+    }
+    .sort-release {
+      border-radius: $borderRadiusSize 0em 0em $borderRadiusSize;
+    }
+    .sort-rating {
+      border-radius: 0 $borderRadiusSize $borderRadiusSize 0;
+    }
+    .sort-release,
+    .sort-rating {
+      font-size: 1em;
+      padding: 0.5em 2em;
+      background-color: rgba($color: $tertiaryColor, $alpha: 0.6);
+      cursor: pointer;
+      &:hover {
+        background-color: $secondaryFontColor;
+      }
+    }
+    .active {
+      background-color: $secondaryFontColor;
+    }
   }
 }

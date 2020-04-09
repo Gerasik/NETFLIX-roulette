@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-d
 
 import Header from 'components/Header';
 import BodyContainer from 'containers/Body';
-import Search from 'components/Search';
+import SearchContainer from 'containers/Search';
 import Footer from 'components/Footer';
 import ErrorBoundary from 'components/ErrorBoundary';
 
@@ -16,7 +16,7 @@ function App(): ReactElement {
             <Redirect to="/search" />
           </Route>
           <Header>
-            <Route path="/search" component={Search} />
+            <Route path="/search" component={SearchContainer} />
           </Header>
         </Switch>
         <ErrorBoundary>

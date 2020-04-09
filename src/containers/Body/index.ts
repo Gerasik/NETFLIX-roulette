@@ -2,6 +2,7 @@ import { createStructuredSelector } from 'reselect';
 import { connect } from 'react-redux';
 
 import Body from 'components/Body';
+import { changeSortBy } from 'containers/Search/actions';
 import { setData } from './actions';
 import { moviesData } from './selectors';
 
@@ -10,6 +11,7 @@ const mapStateToProps = createStructuredSelector({
 });
 
 const mapDispatchToProps = {
+  changeSortBy,
   setData,
 };
 

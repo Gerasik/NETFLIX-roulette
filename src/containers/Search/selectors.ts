@@ -3,7 +3,7 @@ import { createSelector } from 'reselect';
 import { State } from './models';
 
 const searchInfo = (state): State => {
-  return state.searchReducer as State;
+  return state.get('searchReducer') as State;
 };
 
 export const searchData = createSelector(searchInfo, searchInfo => ({

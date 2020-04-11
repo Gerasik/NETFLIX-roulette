@@ -1,57 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Test initial BodyContainer should render with initial state data 1`] = `
-<Provider
-  store={
-    Object {
-      "clearActions": [Function],
-      "dispatch": [Function],
-      "getActions": [Function],
-      "getState": [Function],
-      "replaceReducer": [Function],
-      "subscribe": [Function],
-    }
-  }
->
-  <Connect(Body)>
-    <Body
-      moviesData={Immutable.List []}
-      setData={[Function]}
-    >
-      <ul
-        className="movie-list"
-      >
-        <Component />
-      </ul>
-    </Body>
-  </Connect(Body)>
-</Provider>
-`;
+exports[`Test initial BodyContainer should render with initial state data 1`] = `undefined`;
 
-exports[`Test initial BodyContainer should render with next state data 1`] = `
-<Provider
-  store={
-    Object {
-      "clearActions": [Function],
-      "dispatch": [Function],
-      "getActions": [Function],
-      "getState": [Function],
-      "replaceReducer": [Function],
-      "subscribe": [Function],
-    }
-  }
->
-  <Connect(Body)>
-    <Body
-      moviesData={Immutable.List []}
-      setData={[Function]}
-    >
-      <ul
-        className="movie-list"
-      >
-        <Component />
-      </ul>
-    </Body>
-  </Connect(Body)>
-</Provider>
-`;
+exports[`Test initial BodyContainer should render with next state data 1`] = `undefined`;

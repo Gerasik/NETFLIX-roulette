@@ -5,11 +5,11 @@ import * as Models from 'models';
 import { State } from './models';
 
 const moviesResponse = (state): Models.MoviesResponseMap => {
-  return (state.bodyReducer as State).get('moviesResponse');
+  return (state.get('bodyReducer') as State).get('moviesResponse');
 };
 
 const searchSortBy = (state): string => {
-  return state.searchReducer.get('sortBy');
+  return state.get('searchReducer').get('sortBy');
 };
 
 export const moviesData = createSelector(

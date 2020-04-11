@@ -50,7 +50,7 @@ const Search: FunctionComponent<SearchProps> = ({
         <button
           type="button"
           className={classNames(styles['by-genre'], { [styles.active]: searchBy === 'genres' })}
-          onClick={(): SearchModels.Action.CHANGE_SEARCH_BY => changeSearchBy('genres')}
+          onClick={(): Action.CHANGE_SEARCH_BY => changeSearchBy('genres')}
         >
           genre
         </button>

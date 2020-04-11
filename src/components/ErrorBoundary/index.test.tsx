@@ -4,16 +4,13 @@ import { shallow, mount } from 'enzyme';
 
 import ErrorBoundary from './index';
 
-class Buggy extends React.Component {
-  constructor(props) {
-    super(props);
-    throw new Error('An error has occured in Buggy component!');
+const Buggy: React.FunctionComponent<{ throwError?: boolean }> = ({ throwError = true }) => {
+  if (throwError) {
+    throw new Error('An error has occurred in Buggy component!');
   }
 
-  render() {
-    return <h2>Error</h2>;
-  }
-}
+  return null;
+};
 
 describe('<ErrorBoundary /> test data', () => {
   const wrapper = shallow(

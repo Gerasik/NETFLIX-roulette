@@ -1,6 +1,6 @@
 /* eslint-disable require-yield */
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
-import { takeEvery, select, put, call, cancel, fork, take, delay } from 'redux-saga/effects';
+import { takeEvery, select, put, cancel, fork, take, delay } from 'redux-saga/effects';
 
 export function* watchFetchData() {
   yield takeEvery(['CHANGE-SORT-BY', 'CHANGE-SEARCH-BY'], getState);

@@ -1,4 +1,5 @@
 import Immutable from 'immutable';
+import { REHYDRATE } from 'redux-persist/constants';
 
 import * as Models from 'models';
 import { Action, State } from './models';
@@ -20,6 +21,12 @@ const searchReducer = (state = initialState, action: Models.IAction): State => {
 
     case ActionType.CHANGE_SORT_BY:
       return changeSortBy(state, action);
+
+    case REHYDRATE: {
+      const incoming = action.payload.searchReducer;
+      if (incoming) return incoming;
+      return state;
+    }
 
     default:
       return state;

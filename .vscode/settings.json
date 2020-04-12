@@ -3,11 +3,11 @@
   "files.exclude": {
     "**/.git": true,
     "config": true,
-    "build": true,
+    "build": false,
     "coverage": true,
     "node_modules": true,
     "public": true
   },
-  "cSpell.words": ["camelcase", "contenthash", "entrypoints", "esnext"],
+  "cSpell.words": ["camelcase", "contenthash", "devtools", "entrypoints", "esnext"],
   "typescript.tsdk": "node_modules/typescript/lib"
 }

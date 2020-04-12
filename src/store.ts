@@ -1,28 +1,39 @@
-import { createStore, applyMiddleware } from 'redux';
+import { compose, createStore, applyMiddleware } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import createSagaMiddleware from 'redux-saga';
 import { combineReducers } from 'redux-immutable';
 import { watchFetchData, watchInput } from 'sagas';
 import bodyReducer from 'containers/Body/reducer';
 import searchReducer from 'containers/Search/reducer';
+import { persistStore, autoRehydrate } from 'redux-persist-immutable';
+import { fromJS } from 'immutable';
 
-const reducers = combineReducers({
+const rootReducers = combineReducers({
   bodyReducer,
   searchReducer,
 });
 
-declare global {
-  interface Window {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    __REDUX_DEVTOOLS_EXTENSION_COMPOSE__: any;
-  }
-}
+const initState = fromJS({
+  bodyReducer: fromJS({
+    moviesResponse: {},
+  }),
+  searchReducer: fromJS({
+    searchString: '',
+    searchBy: 'genres',
+    sortBy: 'vote_average',
+  }),
+});
 
-// const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__;
-// const store = createStore(bodyReducer, composeEnhancers());
 const sagaMiddleware = createSagaMiddleware();
-const store = createStore(reducers, composeWithDevTools(applyMiddleware(sagaMiddleware)));
+const store = createStore(
+  rootReducers,
+  initState,
+  compose(composeWithDevTools(applyMiddleware(sagaMiddleware)), autoRehydrate())
+);
+
 sagaMiddleware.run(watchFetchData);
 sagaMiddleware.run(watchInput);
+
+persistStore(store, { key: 'root', whiteList: ['searchReducer'] });
 
 export default store;

@@ -36,3 +36,16 @@ Run cypress interfaces(e2e).
 ### API
 
 [Movies API DB](https://reactjs-cdp.herokuapp.com/api-docs)
+
+---
+
+### .vscode settings
+
+Hidden some folders
+
+- .git
+- config
+- build
+- coverage
+- node_modules
+- public

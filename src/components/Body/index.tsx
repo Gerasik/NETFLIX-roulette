@@ -43,13 +43,19 @@ const Body: FunctionComponent<BodyProps> = ({ setData, moviesData, changeSortBy 
           </button>
         </div>
       </header>
-      <ul className={styles['movie-list']}>
-        {data.map(item => (
-          <li key={item.get('id')} className={styles['movie-item']}>
-            <MovieCard data={item} />
-          </li>
-        ))}
-      </ul>
+      {!total ? (
+        <div className={styles['movie-empty-result']}>
+          <span>No films found</span>
+        </div>
+      ) : (
+        <ul className={styles['movie-list']}>
+          {data.map(item => (
+            <li key={item.get('id')} className={styles['movie-item']}>
+              <MovieCard data={item} />
+            </li>
+          ))}
+        </ul>
+      )}
     </div>
   );
 };

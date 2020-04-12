@@ -35,14 +35,14 @@ const searchReducer = (state = initialState, action: Models.IAction): State => {
 
 export default searchReducer;
 
-const setData: Models.Reducer<State, Action.CHANGE_SEARCH_STRING> = (state, action) => {
+const setData: Models.Reducer<State, Action.ChangeSearchString> = (state, action) => {
   return state.set('searchString', action.payload);
 };
 
-const changeSearchBy: Models.Reducer<State, Action.CHANGE_SEARCH_BY> = (state, action) => {
+const changeSearchBy: Models.Reducer<State, Action.ChangeSearchBy> = (state, action) => {
   return state.set('searchBy', action.payload);
 };
 
-const changeSortBy: Models.Reducer<State, Action.CHANGE_SORT_BY> = (state, action) => {
+const changeSortBy: Models.Reducer<State, Action.ChangeSortBy> = (state, action) => {
   return state.set('sortBy', action.payload);
 };

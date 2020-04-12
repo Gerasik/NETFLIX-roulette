@@ -9,6 +9,6 @@ interface MoviesData {
 }
 export interface BodyProps {
   moviesData: MoviesData;
-  setData: BodyModels.ActionCreator.SetData;
-  changeSortBy: SearchModels.ActionCreator.CHANGE_SORT_BY;
+  setStartData: BodyModels.ActionCreator.SetStartData;
+  changeSortBy: SearchModels.ActionCreator.ChangeSortBy;
 }

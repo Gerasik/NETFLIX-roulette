@@ -9,7 +9,7 @@ interface SearchData {
 
 export interface SearchProps {
   searchData: SearchData;
-  changeSearchString: SearchModels.ActionCreator.CHANGE_SEARCH_STRING;
-  changeSearchBy: SearchModels.ActionCreator.CHANGE_SEARCH_BY;
+  changeSearchString: SearchModels.ActionCreator.ChangeSearchString;
+  changeSearchBy: SearchModels.ActionCreator.ChangeSearchBy;
   setData: BodyModels.ActionCreator.SetData;
 }

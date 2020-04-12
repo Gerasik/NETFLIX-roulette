@@ -6,6 +6,10 @@ export const setData: ActionCreator.SetData = payload => ({
   payload,
 });
 
+export const setStartData: ActionCreator.SetStartData = () => ({
+  type: ActionType.SET_START_DATA,
+});
+
 // export const increment: Action. = payload => ({
 //   type: ActionType.,
 //   payload,

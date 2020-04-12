@@ -3,7 +3,8 @@
 import { takeEvery, select, put, cancel, fork, take, delay } from 'redux-saga/effects';
 
 export function* watchFetchData() {
-  yield takeEvery(['CHANGE-SORT-BY', 'CHANGE-SEARCH-BY'], getState);
+  yield delay(100);
+  yield takeEvery(['CHANGE-SORT-BY', 'CHANGE-SEARCH-BY', 'SET-START-DATA'], getState);
 }
 
 const getSearchData = state => ({

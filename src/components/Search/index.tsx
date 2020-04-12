@@ -31,7 +31,7 @@ const Search: FunctionComponent<SearchProps> = ({
           type="text"
           placeholder="Search"
           className={styles['search-text']}
-          onChange={(event): Action.CHANGE_SEARCH_STRING => changeSearchString(event.target.value)}
+          onChange={(event): Action.ChangeSearchString => changeSearchString(event.target.value)}
           value={searchString}
         />
         <button type="button" className={styles['search-button']} onClick={handleClickSearch}>
@@ -43,14 +43,14 @@ const Search: FunctionComponent<SearchProps> = ({
         <button
           type="button"
           className={classNames(styles['by-title'], { [styles.active]: searchBy === 'title' })}
-          onClick={(): Action.CHANGE_SEARCH_BY => changeSearchBy('title')}
+          onClick={(): Action.ChangeSearchBy => changeSearchBy('title')}
         >
           title
         </button>
         <button
           type="button"
           className={classNames(styles['by-genre'], { [styles.active]: searchBy === 'genres' })}
-          onClick={(): Action.CHANGE_SEARCH_BY => changeSearchBy('genres')}
+          onClick={(): Action.ChangeSearchBy => changeSearchBy('genres')}
         >
           genre
         </button>

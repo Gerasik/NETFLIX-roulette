@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 import Body from 'components/Body';
 import { changeSortBy } from 'containers/Search/actions';
-import { setData } from './actions';
+import { setStartData } from './actions';
 import { moviesData } from './selectors';
 
 const mapStateToProps = createStructuredSelector({
@@ -12,7 +12,7 @@ const mapStateToProps = createStructuredSelector({
 
 const mapDispatchToProps = {
   changeSortBy,
-  setData,
+  setStartData,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Body);

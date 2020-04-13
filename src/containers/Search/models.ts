@@ -2,11 +2,13 @@ import Immutable from 'immutable';
 
 import * as Models from 'models';
 
-export type State = Immutable.Record<{
+export type SearchState = {
   searchString: string;
   searchBy: string;
   sortBy: string;
-}>;
+};
+
+export type State = Immutable.Record<SearchState>;
 
 export namespace Payload {
   export type ChangeSearchString = string;

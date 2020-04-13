@@ -7,12 +7,23 @@ import { testMovie1, testMovie2, testMovieResponse } from 'testData';
 import MovieCard from 'components/MovieCard';
 import Body from './index';
 
-const testList = Immutable.fromJS([testMovie1, testMovie2]);
+const testList = {
+  data: Immutable.fromJS([testMovie1, testMovie2]),
+  total: 2,
+  sortBy: 'release_date',
+};
 
 describe('<Body />', () => {
   const wrapper = shallow(
-    <Body moviesData={testList} setData={() => ({ type: 'string', payload: testMovieResponse })} />
+    <Body
+      moviesData={testList}
+      setStartData={() => ({ type: 'string', payload: testMovieResponse })}
+      changeSortBy={() => ({ type: 'string', payload: 'testMovieResponse' })}
+    />
   );
+
+  wrapper.find('.sort-rating').simulate('click');
+  wrapper.find('.sort-release').simulate('click');
 
   it('should render with test data', () => {
     expect(wrapper).toMatchSnapshot();
@@ -23,6 +34,21 @@ describe('<Body />', () => {
   });
 
   it('right props first MovieCard component', () => {
-    expect(wrapper.find(MovieCard).get(0).props.data).toBe(testList.get(0));
+    expect(wrapper.find(MovieCard).get(0).props.data).toBe(testList.data.get(0));
+  });
+});
+
+describe('<Body /> test empty data', () => {
+  const wrapper = shallow(
+    <Body
+      moviesData={{ ...testList, total: 0 }}
+      setStartData={() => ({ type: 'string', payload: testMovieResponse })}
+      changeSortBy={() => ({ type: 'string', payload: 'testMovieResponse' })}
+    />
+  );
+
+  it('should render with test data', () => {
+    // expect(wrapper).toMatchSnapshot();
+    expect(wrapper.find('.movie-empty-result').length).toBe(1);
   });
 });

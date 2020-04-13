@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/camelcase */
-import Immutable from 'immutable';
+import { fromJS } from 'immutable';
 
 import { Movie, MoviesResponse, MoviesData, MovieMap } from 'models';
 import { State } from './containers/Body/models';
@@ -34,19 +34,39 @@ export const testMovie2: Movie | MovieMap = {
   genres: ['drama'],
 };
 
-export const testMoviesData: MoviesData = Immutable.fromJS([testMovie1, testMovie2]);
+export const testMoviesData: MoviesData = fromJS([testMovie1, testMovie2]);
 
-export const testMovieResponse: MoviesResponse = Immutable.fromJS({
+export const testMovieResponse: MoviesResponse = fromJS({
   data: testMoviesData,
   total: 5,
   offset: 5,
   limit: 5,
 });
 
-export const testInitialState: State = Immutable.fromJS({
+export const testBodyReducerData = {
   moviesResponse: {},
+};
+export const testSearchReducerData = {
+  searchString: '',
+  searchBy: 'genres',
+  sortBy: 'vote_average',
+};
+
+export const testInitialState: State = fromJS({
+  bodyReducer: testBodyReducerData,
+  searchReducer: testSearchReducerData,
 });
 
-export const testNextState: State = Immutable.fromJS({
+export const testEmptyInitialState: State = fromJS({
+  bodyReducer: {
+    data: [],
+    total: 0,
+    offset: 5,
+    limit: 5,
+  },
+  searchReducer: testSearchReducerData,
+});
+
+export const testNextState: State = fromJS({
   moviesResponse: testMovieResponse,
 });

@@ -12,11 +12,14 @@ exports[`render correctly date component 1`] = `
   >
     <input
       className="search-text"
+      onChange={[Function]}
       placeholder="Search"
       type="text"
+      value=""
     />
     <button
       className="search-button"
+      onClick={[Function]}
       type="button"
     >
       search
@@ -29,13 +32,15 @@ exports[`render correctly date component 1`] = `
       search by
     </span>
     <button
-      className="by-title active"
+      className="by-title"
+      onClick={[Function]}
       type="button"
     >
       title
     </button>
     <button
-      className="by-genre"
+      className="by-genre active"
+      onClick={[Function]}
       type="button"
     >
       genre

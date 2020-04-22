@@ -29,6 +29,23 @@ Run static code analysis tool for identifying problematic patterns found in Java
 
 Run to analyze CSS/SCSS code for mistakes and check style consistency.
 
+### `npm run e2e`
+
+Run cypress interfaces(e2e).
+
 ### API
 
 [Movies API DB](https://reactjs-cdp.herokuapp.com/api-docs)
+
+---
+
+### .vscode settings
+
+Hidden some folders
+
+- .git
+- config
+- build
+- coverage
+- node_modules
+- public

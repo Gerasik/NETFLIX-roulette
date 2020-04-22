@@ -1,4 +1,5 @@
 import Immutable from 'immutable';
+import { REHYDRATE } from 'redux-persist/constants';
 
 import * as Models from 'models';
 import { Action, State } from './models';
@@ -12,6 +13,15 @@ const bodyReducer = (state = initialState, action: Models.IAction): State => {
   switch (action.type) {
     case ActionType.SET_DATA:
       return setData(state, action);
+
+    case ActionType.SET_START_DATA:
+      return state;
+
+    case REHYDRATE: {
+      const incoming = action.payload.bodyReducer;
+      if (incoming) return incoming;
+      return state;
+    }
 
     default:
       return state;

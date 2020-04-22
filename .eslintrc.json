@@ -10,11 +10,7 @@
     "prettier/@typescript-eslint",
     "plugin:prettier/recommended"
   ],
-  "plugins": [
-    "react",
-    "@typescript-eslint",
-    "prettier"
-  ],
+  "plugins": ["react", "@typescript-eslint", "prettier"],
   "env": {
     "browser": true,
     "jasmine": true,
@@ -28,10 +24,7 @@
     "@typescript-eslint/camelcase": [
       "error",
       {
-        "allow": [
-          "poster_path",
-          "release_date"
-        ]
+        "allow": ["poster_path", "release_date"]
       }
     ],
     "@typescript-eslint/interface-name-prefix": "off",
@@ -85,9 +78,7 @@
   },
   "overrides": [
     {
-      "files": [
-        "**/*.tsx"
-      ],
+      "files": ["**/*.tsx"],
       "rules": {
         "react/prop-types": "off"
       }

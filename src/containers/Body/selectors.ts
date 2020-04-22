@@ -4,8 +4,20 @@ import { createSelector } from 'reselect';
 import * as Models from 'models';
 import { State } from './models';
 
-const moviesResponse = (state): Models.MoviesResponseMap => (state as State).get('moviesResponse');
+const moviesResponse = (state): Models.MoviesResponseMap => {
+  return (state.get('bodyReducer') as State).get('moviesResponse');
+};
 
-export const moviesData = createSelector(moviesResponse, moviesResponse => {
-  return moviesResponse.get('data') || Immutable.List();
-});
+const searchSortBy = (state): string => {
+  return state.get('searchReducer').get('sortBy');
+};
+
+export const moviesData = createSelector(
+  moviesResponse,
+  searchSortBy,
+  (moviesResponse, searchSortBy) => ({
+    data: moviesResponse.get('data') || Immutable.List(),
+    total: moviesResponse.get('total') || 0,
+    sortBy: searchSortBy,
+  })
+);

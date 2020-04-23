@@ -59,8 +59,8 @@ export const testInitialState: State = fromJS({
 
 export const testEmptyInitialState: State = fromJS({
   bodyReducer: {
-    data: [],
-    total: 0,
+    data: testMoviesData,
+    total: 2,
     offset: 5,
     limit: 5,
   },

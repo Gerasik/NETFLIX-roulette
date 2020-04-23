@@ -188,7 +188,6 @@
       "^.+\\.module\\.(css|sass|scss)$",
       "<rootDir>/src/models",
       "models.ts",
-      "<rootDir>/src/store.ts",
       "serviceWorker.ts"
     ],
     "modulePaths": [],

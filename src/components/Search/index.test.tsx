@@ -9,7 +9,7 @@ const searchComponent = (
     searchData={testSearchReducerData}
     changeSearchString={() => ({ type: 'string', payload: 'testMovieResponse' })}
     changeSearchBy={() => ({ type: 'string', payload: 'testMovieResponse' })}
-    setData={() => ({ type: 'string', payload: testMovieResponse })}
+    setStartData={() => ({ type: 'string', payload: testMovieResponse })}
   />
 );
 

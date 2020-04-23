@@ -186,7 +186,9 @@
     "transformIgnorePatterns": [
       "[/\\\\]node_modules[/\\\\].+\\.(js|jsx|ts|tsx)$",
       "^.+\\.module\\.(css|sass|scss)$",
-      "«<rootDir>/models/»",
+      "<rootDir>/src/models",
+      "models.ts",
+      "<rootDir>/src/store.ts",
       "serviceWorker.ts"
     ],
     "modulePaths": [],

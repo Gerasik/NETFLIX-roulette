@@ -3,6 +3,7 @@ import { takeEvery, select, put, cancel, fork, take, delay } from 'redux-saga/ef
 import * as Models from 'models';
 import { SearchState } from 'containers/Search/models';
 
+import { fetchData } from 'services';
 import { setData } from 'containers/Body/actions';
 import ActionTypeBody from 'containers/Body/constants';
 import ActionTypeSearch from 'containers/Search/constants';
@@ -24,14 +25,6 @@ export const getSearchData = (state): SearchState => ({
   searchBy: state.getIn(['searchReducer', 'searchBy']),
   sortBy: state.getIn(['searchReducer', 'sortBy']),
 });
-
-function fetchData(url: string): Models.FetchData {
-  return fetch(url)
-    .then(response => response.json())
-    .then(response => {
-      return response;
-    });
-}
 
 export function* getState() {
   const { searchString, searchBy, sortBy } = yield select(getSearchData);

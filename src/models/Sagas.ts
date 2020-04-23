@@ -11,8 +11,6 @@ import { Action } from 'containers/Body/models';
 
 export type WatchFetchData = Generator<CallEffect<true> | ForkEffect<never>>;
 
-export type FetchData = Promise<Models.MoviesResponse>;
-
 export type HandleInput = Generator<
   | CallEffect<true>
   | Generator<SelectEffect | Promise<Models.MoviesResponse> | PutEffect<Action.SetData>, void>

@@ -14,9 +14,6 @@ const bodyReducer = (state = initialState, action: Models.IAction): State => {
     case ActionType.SET_DATA:
       return setData(state, action);
 
-    case ActionType.SET_START_DATA:
-      return state;
-
     case REHYDRATE: {
       const incoming = action.payload.bodyReducer;
       if (incoming) return incoming;
@@ -30,6 +27,6 @@ const bodyReducer = (state = initialState, action: Models.IAction): State => {
 
 export default bodyReducer;
 
-const setData: Models.Reducer<State, Action.SetData> = (state, action) => {
+export const setData: Models.Reducer<State, Action.SetData> = (state, action) => {
   return state.set('moviesResponse', Immutable.fromJS(action.payload));
 };

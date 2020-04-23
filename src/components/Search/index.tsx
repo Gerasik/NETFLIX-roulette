@@ -9,20 +9,13 @@ const Search: FunctionComponent<SearchProps> = ({
   searchData,
   changeSearchString,
   changeSearchBy,
-  setData,
+  setStartData,
 }) => {
   const { searchString, searchBy, sortBy } = searchData;
 
   function handleClickSearch(): void {
-    fetch(
-      `https://reactjs-cdp.herokuapp.com/movies?sortBy=${sortBy}&sortOrder=asc&search=${searchString}&searchBy=${searchBy}&limit=6`
-    )
-      .then(response => response.json())
-      .then(response => {
-        setData(response);
-      });
+    setStartData();
   }
-
   return (
     <>
       <p className={styles.label}>find your movie</p>

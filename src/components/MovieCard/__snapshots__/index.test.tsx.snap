@@ -12,11 +12,12 @@ exports[`<MovieCard /> should render with test data 1`] = `
   <div
     className="container"
   >
-    <span
+    <Link
       className="title"
+      to="/film/45"
     >
       test movie
-    </span>
+    </Link>
     <span
       className="date"
     >

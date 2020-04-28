@@ -10,7 +10,7 @@ const Body: FunctionComponent<BodyProps> = ({ setStartData, moviesData, changeSo
   const { data, total, sortBy } = moviesData;
 
   useEffect(() => {
-    setStartData();
+    if (!localStorage.length) setStartData();
   }, [setStartData]);
 
   return (

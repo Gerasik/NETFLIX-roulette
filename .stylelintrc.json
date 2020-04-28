@@ -9,7 +9,7 @@
       }
     ],
     "max-empty-lines": 2,
-    "unit-whitelist": ["em", "rem", "%", "s", "vh"],
+    "unit-whitelist": ["em", "rem", "%", "s", "vh", "deg"],
     "selector-pseudo-class-no-unknown": null
   }
 }

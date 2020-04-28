@@ -3,7 +3,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import Immutable from 'immutable';
 
-import { testMovie1, testMovie2, testMovieResponse } from 'testData';
+import { testMovie1, testMovie2, testMovieResponse } from 'mock';
 import MovieCard from 'components/MovieCard';
 import Body from './index';
 

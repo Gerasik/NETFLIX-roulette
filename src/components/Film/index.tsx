@@ -1,0 +1,52 @@
+import React, { useEffect, FunctionComponent } from 'react';
+import { useParams } from 'react-router-dom';
+
+import imagePlaceholder from '../../assets/image_placeholder.png';
+import { FilmProps } from './models';
+
+import styles from './style.module.scss';
+
+const Film: FunctionComponent<FilmProps> = ({ filmData, setFilmId }) => {
+  const { id } = useParams();
+
+  useEffect(() => {
+    setFilmId(Number(id));
+    window.scrollTo(0, 0);
+  }, [id]);
+
+  if (!filmData.has('id')) return <span> No data found</span>;
+
+  const imagePath = filmData.get('poster_path');
+  const poster_path = imagePath || imagePlaceholder;
+  const title = filmData.get('title');
+  const rating = filmData.get('vote_average');
+  const smallDescription = filmData.get('tagline');
+  const year = new Date(filmData.get('release_date')).getFullYear();
+  const runtime = filmData.get('runtime') || 0;
+  const overview = filmData.get('overview');
+
+  return (
+    <div className={styles.container}>
+      <picture className={styles.picture} style={imagePath ? { backgroundColor: 'inherit' } : {}}>
+        <source srcSet={poster_path} media="(min-width: 600px)" />
+        <img src={poster_path} width={imagePath ? '100%' : '50%'} alt={title} />
+      </picture>
+      <div className={styles.info}>
+        <div className={styles['title-container']}>
+          <h1 className={styles.title}>{title}</h1>
+          <div className={styles.round}>
+            <span className={styles.rating}>{rating}</span>
+          </div>
+        </div>
+        <span className={styles.smallDescription}>{smallDescription}</span>
+        <div className={styles.parameters}>
+          <span className={styles.year}>{year}</span>
+          <span className={styles.runtime}>{`${runtime} min`}</span>
+        </div>
+        <p className={styles.overview}>{overview}</p>
+      </div>
+    </div>
+  );
+};
+
+export default Film;

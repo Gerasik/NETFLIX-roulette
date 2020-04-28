@@ -1,10 +1,10 @@
 /* eslint-disable @typescript-eslint/camelcase */
 import { fromJS } from 'immutable';
 
-import { Movie, MoviesResponse, MoviesData, MovieMap } from 'models';
+import { Movie, MoviesResponse, MoviesData } from 'models';
 import { State } from './containers/Body/models';
 
-export const testMovie1: Movie | MovieMap = {
+export const testMovie1: Movie = {
   id: 1,
   title: 'first movie',
   tagline: 'test',
@@ -19,7 +19,7 @@ export const testMovie1: Movie | MovieMap = {
   genres: ['drama', 'sitcom', 'drama'],
 };
 
-export const testMovie2: Movie | MovieMap = {
+export const testMovie2: Movie = {
   id: 2,
   title: 'second movie',
   tagline: 'test',

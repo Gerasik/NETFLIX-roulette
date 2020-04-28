@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
-import { testSearchReducerData, testMovieResponse } from 'testData';
+import { testSearchReducerData, testMovieResponse } from 'mock';
 import Search from '.';
 
 const searchComponent = (

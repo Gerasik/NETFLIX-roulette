@@ -7,7 +7,7 @@ import ActionType from './constants';
 
 const initialState: State = Immutable.fromJS({
   searchString: '',
-  searchBy: 'genres',
+  searchBy: 'title',
   sortBy: 'vote_average',
 });
 

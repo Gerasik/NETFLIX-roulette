@@ -4,21 +4,25 @@ import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-d
 import Header from 'components/Header';
 import Body from 'containers/Body';
 import Search from 'containers/Search';
+import Film from 'containers/Film';
 import Footer from 'components/Footer';
 import ErrorBoundary from 'components/ErrorBoundary';
+import ErrorPage from 'components/ErrorPage';
 
 function App(): ReactElement {
   return (
     <Router>
       <main>
-        <Switch>
-          <Route path="/" exact>
-            <Redirect to="/search" />
-          </Route>
-          <Header>
-            <Route path="/search" component={Search} />
-          </Header>
-        </Switch>
+        <Header>
+          <Switch>
+            <Route path="/" exact>
+              <Redirect to="/search" />
+            </Route>
+            <Route path="/search/:str?" component={Search} />
+            <Route path="/film/:id" component={Film} />
+            <Route component={ErrorPage} />
+          </Switch>
+        </Header>
         <ErrorBoundary>
           <Body />
         </ErrorBoundary>

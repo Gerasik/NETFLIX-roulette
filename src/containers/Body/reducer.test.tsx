@@ -1,7 +1,7 @@
 import { REHYDRATE } from 'redux-persist/constants';
 import { fromJS } from 'immutable';
 
-import { testBodyReducerData, testMovieResponse } from 'testData';
+import { testBodyReducerData, testMovieResponse } from 'mock';
 import bodyReducer, { setData } from './reducer';
 import ActionType from './constants';
 

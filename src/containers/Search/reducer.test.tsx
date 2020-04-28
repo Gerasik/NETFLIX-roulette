@@ -1,7 +1,7 @@
 import { REHYDRATE } from 'redux-persist/constants';
 import { fromJS } from 'immutable';
 
-import { testSearchReducerData } from 'testData';
+import { testSearchReducerData } from 'mock';
 import searchReducer, { changeSearchString, changeSearchBy, changeSortBy } from './reducer';
 import ActionType from './constants';
 

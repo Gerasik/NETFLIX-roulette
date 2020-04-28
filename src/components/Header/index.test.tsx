@@ -1,5 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
+import { BrowserRouter as Router } from 'react-router-dom';
 
 import Header from './index';
 
@@ -11,18 +12,22 @@ describe('<Header />', () => {
 
   it('renders children when passed in', () => {
     const wrapper = shallow(
-      <Header>
-        <div className="unique" />
-      </Header>
+      <Router>
+        <Header>
+          <div className="unique" />
+        </Header>
+      </Router>
     );
     expect(wrapper.contains(<div className="unique" />)).toBeTruthy();
   });
 
   it('renders children when passed in', () => {
     const wrapper = shallow(
-      <Header>
-        <div className="unique" />
-      </Header>
+      <Router>
+        <Header>
+          <div className="unique" />
+        </Header>
+      </Router>
     );
     expect(wrapper).toMatchSnapshot();
   });

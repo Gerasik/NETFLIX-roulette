@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/camelcase */
 import { fromJS } from 'immutable';
 
-import { Movie, MoviesResponse, MoviesData } from 'models';
+import { Movie, MoviesResponse, MoviesData, MovieMap } from 'models';
 import { State } from './containers/Body/models';
 
 export const testMovie1: Movie = {
@@ -33,6 +33,27 @@ export const testMovie2: Movie = {
   runtime: 5454,
   genres: ['drama'],
 };
+
+export const testMovie3: Movie = {
+  id: 2,
+  title: 'second movie',
+  tagline: 'test',
+  vote_average: 55,
+  vote_count: 66,
+  release_date: '2020-05-01',
+  poster_path: '',
+  overview: 'ove',
+  budget: 54545,
+  revenue: 5454,
+  runtime: NaN,
+  genres: ['drama'],
+};
+
+export const testMovieMap1: MovieMap = fromJS(testMovie1);
+
+export const testMovieMap2: MovieMap = fromJS(testMovie2);
+
+export const testMovieMap3: MovieMap = fromJS(testMovie3);
 
 export const testMoviesData: MoviesData = fromJS([testMovie1, testMovie2]);
 

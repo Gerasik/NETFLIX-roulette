@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useEffect, useRef, MutableRefObject, RefObject } from 'react';
+import React, { FunctionComponent, useEffect, useRef } from 'react';
 import classNames from 'classnames';
 import { useParams } from 'react-router-dom';
 import { debounce } from 'lodash';

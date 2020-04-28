@@ -1,50 +1,83 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`render correctly date component 1`] = `
-<Fragment>
-  <p
-    className="label"
+<Router
+  history={
+    Object {
+      "action": "POP",
+      "block": [Function],
+      "createHref": [Function],
+      "go": [Function],
+      "goBack": [Function],
+      "goForward": [Function],
+      "length": 1,
+      "listen": [Function],
+      "location": Object {
+        "hash": "",
+        "pathname": "/",
+        "search": "",
+        "state": undefined,
+      },
+      "push": [Function],
+      "replace": [Function],
+    }
+  }
+>
+  <Search
+    changeSearchBy={[Function]}
+    changeSearchString={[Function]}
+    searchData={
+      Object {
+        "searchBy": "genres",
+        "searchString": "",
+        "sortBy": "vote_average",
+      }
+    }
+    setStartData={[Function]}
   >
-    find your movie
-  </p>
-  <div
-    className="search-form"
-  >
-    <input
-      className="search-text"
-      onChange={[Function]}
-      placeholder="Search"
-      type="text"
-      value=""
-    />
-    <button
-      className="search-button"
-      onClick={[Function]}
-      type="button"
+    <p
+      className="label"
     >
-      search
-    </button>
-  </div>
-  <div
-    className="search-by"
-  >
-    <span>
-      search by
-    </span>
-    <button
-      className="by-title"
-      onClick={[Function]}
-      type="button"
+      find your movie
+    </p>
+    <div
+      className="search-form"
     >
-      title
-    </button>
-    <button
-      className="by-genre active"
-      onClick={[Function]}
-      type="button"
+      <input
+        className="search-text"
+        onChange={[Function]}
+        placeholder="Search"
+        type="text"
+      />
+      <button
+        className="search-button"
+        onClick={[Function]}
+        type="button"
+      >
+        search
+      </button>
+    </div>
+    <div
+      className="search-by"
     >
-      genre
-    </button>
-  </div>
-</Fragment>
+      <span>
+        search by
+      </span>
+      <button
+        className="by-title"
+        onClick={[Function]}
+        type="button"
+      >
+        title
+      </button>
+      <button
+        className="by-genre active"
+        onClick={[Function]}
+        type="button"
+      >
+        genre
+      </button>
+    </div>
+  </Search>
+</Router>
 `;

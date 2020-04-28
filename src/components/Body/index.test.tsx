@@ -48,7 +48,6 @@ describe('<Body /> test empty data', () => {
   );
 
   it('should render with test data', () => {
-    // expect(wrapper).toMatchSnapshot();
     expect(wrapper.find('.movie-empty-result').length).toBe(1);
   });
 });

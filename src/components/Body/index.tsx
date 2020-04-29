@@ -1,5 +1,6 @@
 import React, { useEffect, FunctionComponent } from 'react';
 import classNames from 'classnames';
+import _ from 'lodash';
 
 import { Action } from 'containers/Search/models';
 import MovieCard from 'components/MovieCard';
@@ -9,9 +10,22 @@ import { BodyProps } from './models';
 const Body: FunctionComponent<BodyProps> = ({ setStartData, moviesData, changeSortBy }) => {
   const { data, total, sortBy } = moviesData;
 
+  const bodyAction = _.throttle(() => checkAddContent(), 300);
+
   useEffect(() => {
+    document.addEventListener('scroll', bodyAction);
     if (!localStorage.length) setStartData();
+    return () => {
+      document.removeEventListener('scroll', bodyAction);
+    };
   }, [setStartData]);
+
+  function checkAddContent() {
+    const lengthToBottom = document.body.clientHeight - window.innerHeight - window.scrollY;
+    if (lengthToBottom < 200) {
+      console.log('add');
+    }
+  }
 
   return (
     <div className={styles['movie-container']}>

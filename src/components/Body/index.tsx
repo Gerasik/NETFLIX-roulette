@@ -14,7 +14,7 @@ const Body: FunctionComponent<BodyProps> = ({ setStartData, moviesData, changeSo
 
   useEffect(() => {
     document.addEventListener('scroll', bodyAction);
-    if (!localStorage.length) setStartData();
+    // if (!localStorage.length) setStartData();
     return () => {
       document.removeEventListener('scroll', bodyAction);
     };

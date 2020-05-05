@@ -32,12 +32,21 @@ export const getSearchData = (state): SearchState => ({
 
 export function* getState() {
   const { searchString, searchBy, sortBy } = yield select(getSearchData);
-  const paramsStr = searchString
-    ? `sortBy=${sortBy}&sortOrder=asc&search=${searchString}&searchBy=${searchBy}&`
-    : '';
-  const searchStr = `https://reactjs-cdp.herokuapp.com/movies?${paramsStr}limit=6`;
-  const payload = yield fetchData(searchStr);
-  const action = setData(payload);
+  const emptyResult = {
+    data: [],
+    total: 0,
+    offset: 0,
+    limit: 0,
+  };
+  let action = setData(emptyResult);
+  if (searchString) {
+    const paramsStr = searchString
+      ? `sortBy=${sortBy}&sortOrder=asc&search=${searchString}&searchBy=${searchBy}&`
+      : '';
+    const searchStr = `https://reactjs-cdp.herokuapp.com/movies?${paramsStr}limit=6`;
+    const payload = yield fetchData(searchStr);
+    action = setData(payload);
+  }
 
   yield put(action);
 }

@@ -20,9 +20,11 @@ const Search: FunctionComponent<SearchProps> = ({
   useEffect(() => {
     const data = str ? String(str) : '';
     setTimeout(() => {
-      changeSearchString(data);
-      inputEl.current.value = data;
-      setStartData();
+      if (localStorage.length && !data) {
+        changeSearchString(data);
+        inputEl.current.value = data;
+        setStartData();
+      }
     }, 100);
   }, [str]);
 

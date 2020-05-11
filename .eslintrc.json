@@ -36,7 +36,8 @@
       "never",
       {
         "ts": "always",
-        "tsx": "always"
+        "tsx": "always",
+        "png": "always"
       }
     ],
     "import/prefer-default-export": "off",

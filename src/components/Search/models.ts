@@ -11,5 +11,5 @@ export interface SearchProps {
   searchData: SearchData;
   changeSearchString: SearchModels.ActionCreator.ChangeSearchString;
   changeSearchBy: SearchModels.ActionCreator.ChangeSearchBy;
-  setData: BodyModels.ActionCreator.SetData;
+  setStartData: BodyModels.ActionCreator.SetStartData;
 }

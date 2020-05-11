@@ -1,22 +1,29 @@
-import { takeEvery, select, put, cancel, fork, take, delay } from 'redux-saga/effects';
+import { fromJS } from 'immutable';
+/* eslint-disable @typescript-eslint/explicit-function-return-type */
+import { takeEvery, select, put, delay, ForkEffect, takeLatest } from 'redux-saga/effects';
 
 import * as Models from 'models';
 import { SearchState } from 'containers/Search/models';
 
+import { fetchData, getFilmData } from 'services';
 import { setData } from 'containers/Body/actions';
+import { setFilmData } from 'containers/Film/actions';
 import ActionTypeBody from 'containers/Body/constants';
 import ActionTypeSearch from 'containers/Search/constants';
+import ActionTypeFilm from 'containers/Film/constants';
 
 export function* watchFetchData(): Models.WatchFetchData {
-  yield delay(100);
-  yield takeEvery(
-    [
-      ActionTypeSearch.CHANGE_SORT_BY,
-      ActionTypeSearch.CHANGE_SEARCH_BY,
-      ActionTypeBody.SET_START_DATA,
-    ],
-    getState
-  );
+  yield takeEvery([ActionTypeSearch.CHANGE_SORT_BY, ActionTypeBody.SET_START_DATA], getState);
+  yield takeLatest([ActionTypeBody.ADD_DATA], getAddData);
+}
+
+export function* watchFilmId(): Generator<ForkEffect<never>, void, unknown> {
+  yield takeEvery([ActionTypeFilm.SET_FILM_ID], (...attr) => setFilmResponse(attr[0]));
+}
+
+export function* setFilmResponse(action) {
+  const data = yield getFilmData(action.payload);
+  yield put(setFilmData(data));
 }
 
 export const getSearchData = (state): SearchState => ({
@@ -25,35 +32,52 @@ export const getSearchData = (state): SearchState => ({
   sortBy: state.getIn(['searchReducer', 'sortBy']),
 });
 
-function fetchData(url: string): Models.FetchData {
-  return fetch(url)
-    .then(response => response.json())
-    .then(response => {
-      return response;
-    });
-}
-
 export function* getState() {
   const { searchString, searchBy, sortBy } = yield select(getSearchData);
-  const searchStr = `https://reactjs-cdp.herokuapp.com/movies?sortBy=${sortBy}&sortOrder=asc&search=${searchString}&searchBy=${searchBy}&limit=6`;
-  const payload = yield fetchData(searchStr);
-  const action = setData(payload);
+  const emptyResult = {
+    data: [],
+    total: 0,
+    offset: 0,
+    limit: 0,
+  };
+  let action = setData(emptyResult);
+  if (searchString) {
+    const paramsStr = searchString
+      ? `sortBy=${sortBy}&sortOrder=desc&search=${searchString}&searchBy=${searchBy}&`
+      : '';
+    const searchStr = `https://reactjs-cdp.herokuapp.com/movies?${paramsStr}limit=6`;
+    const payload = yield fetchData(searchStr);
+    action = setData(payload);
+  }
 
   yield put(action);
 }
 
-function* handleInput(): Models.HandleInput {
-  yield delay(1500);
-  yield getState();
-}
+export const getMovieData = (state): SearchState => ({
+  searchString: state.getIn(['searchReducer', 'searchString']),
+  searchBy: state.getIn(['searchReducer', 'searchBy']),
+  sortBy: state.getIn(['searchReducer', 'sortBy']),
+});
 
-export function* watchInput(): Models.WatchInput {
-  let task;
-  while (true) {
-    yield take(ActionTypeSearch.CHANGE_SEARCH_STRING);
-    if (task) {
-      yield cancel(task);
-    }
-    task = yield fork(handleInput);
+function* getAddData() {
+  const { data, total } = yield select(getBodyData);
+  const { searchString, searchBy, sortBy } = yield select(getSearchData);
+  const paramsStr = searchString
+    ? `sortBy=${sortBy}&sortOrder=desc&search=${searchString}&searchBy=${searchBy}&offset=${data.size}&`
+    : '';
+  if (data.size < total) {
+    const searchStr = `https://reactjs-cdp.herokuapp.com/movies?${paramsStr}limit=6`;
+    const payload = yield fetchData(searchStr);
+    yield put(setData(payload));
   }
 }
+
+const getBodyData = state => {
+  const bodyData = state.get('bodyReducer').get('moviesResponse');
+  return {
+    data: bodyData.get('data'),
+    total: bodyData.get('total'),
+    offset: bodyData.get('offset'),
+    limit: bodyData.get('limit'),
+  };
+};

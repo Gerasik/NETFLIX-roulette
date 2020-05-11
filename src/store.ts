@@ -2,15 +2,18 @@ import { compose, createStore, applyMiddleware } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import createSagaMiddleware from 'redux-saga';
 import { combineReducers } from 'redux-immutable';
-import { watchFetchData, watchInput } from 'sagas';
+import { fromJS } from 'immutable';
+import { persistStore, autoRehydrate } from 'redux-persist-immutable';
+
+import { watchFetchData, watchFilmId } from 'sagas';
 import bodyReducer from 'containers/Body/reducer';
 import searchReducer from 'containers/Search/reducer';
-import { persistStore, autoRehydrate } from 'redux-persist-immutable';
-import { fromJS } from 'immutable';
+import filmData from 'containers/Film/reducer';
 
 const rootReducers = combineReducers({
   bodyReducer,
   searchReducer,
+  filmData,
 });
 
 const initState = fromJS({
@@ -19,7 +22,7 @@ const initState = fromJS({
   }),
   searchReducer: fromJS({
     searchString: '',
-    searchBy: 'genres',
+    searchBy: 'title',
     sortBy: 'vote_average',
   }),
 });
@@ -32,7 +35,7 @@ const store = createStore(
 );
 
 sagaMiddleware.run(watchFetchData);
-sagaMiddleware.run(watchInput);
+sagaMiddleware.run(watchFilmId);
 
 persistStore(store, { key: 'root', whiteList: ['searchReducer'] });
 

@@ -1,17 +1,35 @@
 import React, { useEffect, FunctionComponent } from 'react';
 import classNames from 'classnames';
+import _ from 'lodash';
 
 import { Action } from 'containers/Search/models';
 import MovieCard from 'components/MovieCard';
 import styles from './style.module.scss';
 import { BodyProps } from './models';
 
-const Body: FunctionComponent<BodyProps> = ({ setStartData, moviesData, changeSortBy }) => {
+const Body: FunctionComponent<BodyProps> = ({
+  setStartData,
+  moviesData,
+  changeSortBy,
+  addData,
+}) => {
   const { data, total, sortBy } = moviesData;
 
+  const bodyAction = _.throttle(() => checkAddContent(), 300);
+
   useEffect(() => {
-    setStartData();
+    document.addEventListener('scroll', bodyAction);
+    return (): void => {
+      document.removeEventListener('scroll', bodyAction);
+    };
   }, [setStartData]);
+
+  function checkAddContent(): void {
+    const lengthToBottom = document.body.clientHeight - window.innerHeight - window.scrollY;
+    if (lengthToBottom < 100) {
+      addData();
+    }
+  }
 
   return (
     <div className={styles['movie-container']}>
@@ -50,6 +68,7 @@ const Body: FunctionComponent<BodyProps> = ({ setStartData, moviesData, changeSo
               <MovieCard data={item} />
             </li>
           ))}
+          {data.size % 3 === 2 ? <li className={styles['movie-item']} /> : null}
         </ul>
       )}
     </div>

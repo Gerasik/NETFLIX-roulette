@@ -1,5 +1,7 @@
-import React, { FunctionComponent } from 'react';
+import React, { FunctionComponent, useEffect, useRef } from 'react';
 import classNames from 'classnames';
+import { useParams } from 'react-router-dom';
+import { debounce } from 'lodash';
 
 import { Action } from 'containers/Search/models';
 import styles from './style.module.scss';
@@ -9,18 +11,44 @@ const Search: FunctionComponent<SearchProps> = ({
   searchData,
   changeSearchString,
   changeSearchBy,
-  setData,
+  setStartData,
 }) => {
-  const { searchString, searchBy, sortBy } = searchData;
+  const { searchBy } = searchData;
+  const { str } = useParams();
+  const inputEl = useRef(document.createElement('input'));
+
+  useEffect(() => {
+    const data = str ? String(str) : '';
+    setTimeout(() => {
+      if (localStorage.length && data) {
+        changeSearchString(data);
+        inputEl.current.value = data;
+        setStartData();
+      }
+    }, 100);
+  }, [str]);
 
   function handleClickSearch(): void {
-    fetch(
-      `https://reactjs-cdp.herokuapp.com/movies?sortBy=${sortBy}&sortOrder=asc&search=${searchString}&searchBy=${searchBy}&limit=6`
-    )
-      .then(response => response.json())
-      .then(response => {
-        setData(response);
-      });
+    setStartData();
+  }
+
+  function handleChangeSearch(event): void {
+    const searchString = event.target.value;
+    changeSearchString(searchString);
+    const href =
+      window.location.href.slice(-6) === 'search' ? `search/${searchString}` : searchString;
+
+    window.history.pushState(null, '', href || '/search');
+    setStartData();
+  }
+
+  function debounceEvent(...arg) {
+    const fn = arg[0];
+    const debounceEvent = debounce(fn, 500);
+    return e => {
+      e.persist();
+      return debounceEvent(e);
+    };
   }
 
   return (
@@ -28,11 +56,11 @@ const Search: FunctionComponent<SearchProps> = ({
       <p className={styles.label}>find your movie</p>
       <div className={styles['search-form']}>
         <input
+          ref={inputEl}
           type="text"
           placeholder="Search"
           className={styles['search-text']}
-          onChange={(event): Action.ChangeSearchString => changeSearchString(event.target.value)}
-          value={searchString}
+          onChange={debounceEvent(handleChangeSearch)}
         />
         <button type="button" className={styles['search-button']} onClick={handleClickSearch}>
           search

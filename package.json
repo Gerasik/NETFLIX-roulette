@@ -144,6 +144,7 @@
     "eslint-plugin-prettier": "^3.1.2",
     "eslint-plugin-react": "^7.19.0",
     "eslint-plugin-react-hooks": "^2.5.0",
+    "history": "^4.10.1",
     "husky": "^4.2.3",
     "jest": "^24.9.0",
     "lint-staged": "^10.0.10",
@@ -186,7 +187,8 @@
     "transformIgnorePatterns": [
       "[/\\\\]node_modules[/\\\\].+\\.(js|jsx|ts|tsx)$",
       "^.+\\.module\\.(css|sass|scss)$",
-      "«<rootDir>/models/»",
+      "<rootDir>/src/models",
+      "models.ts",
       "serviceWorker.ts"
     ],
     "modulePaths": [],

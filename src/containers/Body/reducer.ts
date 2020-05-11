@@ -28,5 +28,9 @@ const bodyReducer = (state = initialState, action: Models.IAction): State => {
 export default bodyReducer;
 
 export const setData: Models.Reducer<State, Action.SetData> = (state, action) => {
-  return state.set('moviesResponse', Immutable.fromJS(action.payload));
+  if (!action.payload.offset) return state.set('moviesResponse', Immutable.fromJS(action.payload));
+  const { data, offset } = action.payload;
+  return state
+    .updateIn(['moviesResponse', 'data'], any => any.merge(Immutable.fromJS(data)))
+    .setIn(['moviesResponse', 'offset'], offset);
 };

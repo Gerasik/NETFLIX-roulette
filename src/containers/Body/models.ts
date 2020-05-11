@@ -12,10 +12,12 @@ export namespace Payload {
 
 export namespace Action {
   export type SetData = Models.IAction<Payload.SetData>;
+  export type AddData = { type: string };
   export type SetStartData = { type: string };
 }
 
 export namespace ActionCreator {
   export type SetData = (payload: Payload.SetData) => Action.SetData;
   export type SetStartData = () => Action.SetStartData;
+  export type AddData = () => Action.AddData;
 }

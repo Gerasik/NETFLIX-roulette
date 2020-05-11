@@ -9,3 +9,7 @@ export const setData: ActionCreator.SetData = payload => ({
 export const setStartData: ActionCreator.SetStartData = () => ({
   type: ActionType.SET_START_DATA,
 });
+
+export const addData: ActionCreator.AddData = () => ({
+  type: ActionType.ADD_DATA,
+});

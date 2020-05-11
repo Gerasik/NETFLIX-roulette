@@ -1,7 +1,8 @@
-import React, { FunctionComponent } from 'react';
+import React, { FunctionComponent, useState } from 'react';
 import { Link } from 'react-router-dom';
 import _ from 'lodash';
 
+import imagePlaceholder from 'assets/image_placeholder.png';
 import styles from './style.module.scss';
 import { MovieCardProps } from './models';
 
@@ -12,9 +13,24 @@ const MovieCard: FunctionComponent<MovieCardProps> = ({ data }) => {
   const genresUniq = _.uniq(data.get('genres').toArray());
   const id = data.get('id');
 
+  const [imgError, setImgError] = useState(true);
+
+  const image = imgError ? (
+    <img
+      src={posterPath}
+      alt={title}
+      className={styles.image}
+      onError={(): void => setImgError(false)}
+    />
+  ) : (
+    <div className={styles.error}>
+      <img className={styles['error-image']} src={imagePlaceholder} alt="Error load" />
+    </div>
+  );
+
   return (
     <div className={styles.item}>
-      <img src={posterPath} alt={title} className={styles.image} />
+      {image}
       <div className={styles.container}>
         <Link to={`/film/${id}`} className={styles.title}>
           {title}

@@ -1,7 +1,7 @@
-import React, { useEffect, FunctionComponent } from 'react';
+import React, { useEffect, FunctionComponent, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
-import imagePlaceholder from '../../assets/image_placeholder.png';
+import imagePlaceholder from 'assets/image_placeholder.png';
 import { FilmProps } from './models';
 
 import styles from './style.module.scss';
@@ -14,6 +14,8 @@ const Film: FunctionComponent<FilmProps> = ({ filmData, setFilmId }) => {
     window.scrollTo(0, 0);
   }, [id]);
 
+  const [imgError, setImgError] = useState(true);
+
   if (!filmData.has('id')) return <span> No data found</span>;
 
   const imagePath = filmData.get('poster_path');
@@ -25,12 +27,26 @@ const Film: FunctionComponent<FilmProps> = ({ filmData, setFilmId }) => {
   const runtime = filmData.get('runtime') || 0;
   const overview = filmData.get('overview');
 
+  const image = imgError ? (
+    <picture className={styles.picture} style={imagePath ? { backgroundColor: 'inherit' } : {}}>
+      <source srcSet={poster_path} media="(min-width: 600px)" />
+      <img
+        src={poster_path}
+        width={imagePath ? '100%' : '50%'}
+        alt={title}
+        onError={(): void => setImgError(true)}
+      />
+    </picture>
+  ) : (
+    <picture className={styles.picture}>
+      <source srcSet={imagePlaceholder} media="(min-width: 600px)" />
+      <img src={imagePlaceholder} width="50%" alt="error load" />
+    </picture>
+  );
+
   return (
     <div className={styles.container}>
-      <picture className={styles.picture} style={imagePath ? { backgroundColor: 'inherit' } : {}}>
-        <source srcSet={poster_path} media="(min-width: 600px)" />
-        <img src={poster_path} width={imagePath ? '100%' : '50%'} alt={title} />
-      </picture>
+      {image}
       <div className={styles.info}>
         <div className={styles['title-container']}>
           <h1 className={styles.title}>{title}</h1>

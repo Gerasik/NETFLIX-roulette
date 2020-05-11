@@ -20,7 +20,7 @@ const Search: FunctionComponent<SearchProps> = ({
   useEffect(() => {
     const data = str ? String(str) : '';
     setTimeout(() => {
-      if (localStorage.length && !data) {
+      if (localStorage.length && data) {
         changeSearchString(data);
         inputEl.current.value = data;
         setStartData();

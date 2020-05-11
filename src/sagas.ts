@@ -1,5 +1,6 @@
+import { fromJS } from 'immutable';
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
-import { takeEvery, select, put, delay, ForkEffect } from 'redux-saga/effects';
+import { takeEvery, select, put, delay, ForkEffect, takeLatest } from 'redux-saga/effects';
 
 import * as Models from 'models';
 import { SearchState } from 'containers/Search/models';
@@ -13,6 +14,7 @@ import ActionTypeFilm from 'containers/Film/constants';
 
 export function* watchFetchData(): Models.WatchFetchData {
   yield takeEvery([ActionTypeSearch.CHANGE_SORT_BY, ActionTypeBody.SET_START_DATA], getState);
+  yield takeLatest([ActionTypeBody.ADD_DATA], getAddData);
 }
 
 export function* watchFilmId(): Generator<ForkEffect<never>, void, unknown> {
@@ -41,7 +43,7 @@ export function* getState() {
   let action = setData(emptyResult);
   if (searchString) {
     const paramsStr = searchString
-      ? `sortBy=${sortBy}&sortOrder=asc&search=${searchString}&searchBy=${searchBy}&`
+      ? `sortBy=${sortBy}&sortOrder=desc&search=${searchString}&searchBy=${searchBy}&`
       : '';
     const searchStr = `https://reactjs-cdp.herokuapp.com/movies?${paramsStr}limit=6`;
     const payload = yield fetchData(searchStr);
@@ -50,3 +52,32 @@ export function* getState() {
 
   yield put(action);
 }
+
+export const getMovieData = (state): SearchState => ({
+  searchString: state.getIn(['searchReducer', 'searchString']),
+  searchBy: state.getIn(['searchReducer', 'searchBy']),
+  sortBy: state.getIn(['searchReducer', 'sortBy']),
+});
+
+function* getAddData() {
+  const { data, total } = yield select(getBodyData);
+  const { searchString, searchBy, sortBy } = yield select(getSearchData);
+  const paramsStr = searchString
+    ? `sortBy=${sortBy}&sortOrder=desc&search=${searchString}&searchBy=${searchBy}&offset=${data.size}&`
+    : '';
+  if (data.size < total) {
+    const searchStr = `https://reactjs-cdp.herokuapp.com/movies?${paramsStr}limit=6`;
+    const payload = yield fetchData(searchStr);
+    yield put(setData(payload));
+  }
+}
+
+const getBodyData = state => {
+  const bodyData = state.get('bodyReducer').get('moviesResponse');
+  return {
+    data: bodyData.get('data'),
+    total: bodyData.get('total'),
+    offset: bodyData.get('offset'),
+    limit: bodyData.get('limit'),
+  };
+};
